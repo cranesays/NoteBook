@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             xmlns:viewModels="clr-namespace:Notes.ViewModels"
+             
+             x:Class="Notes.Views.NotePage"
+             Title="Note">
+
+    <ContentPage.BindingContext>
+        <viewModels:NoteViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Spacing="10" Margin="5"><!--Spacing子视图之间的控件量，Margin页边距，上，右，下，左-->
+        <Editor x:Name="TextEditor"
+                Placeholder="Enter your note"
+                Text="{Binding Text}"
+                HeightRequest="100" /><!--多行文本编辑器控件-->
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+            <!--Button Text="Save"
+                    Clicked="SaveButton_Clicked" /-->
+
+            <!--Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="DeleteButton_Clicked" /-->
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"/>
+
+            <Button Grid.Column="1"
+                    Text="Delete"
+                    Command="{Binding DeleteCommand}"/>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
